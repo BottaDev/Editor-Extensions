@@ -44,14 +44,11 @@ public class MarkerWindow : EditorWindow
         
         _color = EditorGUILayout.ColorField("Set Color", _color);
 
-        if (GUILayout.Button("Set Names"))
-        {
-            
-        }
+        if (GUILayout.Button("Rename Objects"))
+            NominatorWindow.OpenWindow(_name);
         
         if (GUILayout.Button("Mark Objects", GUILayout.Height(50)) && !string.IsNullOrEmpty(_name))
             MarkObjects(GetObjects());
-
     }
     
     private void MarkObjects(List<GameObject> objs)
