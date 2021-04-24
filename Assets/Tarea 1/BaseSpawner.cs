@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class BaseSpawner : MonoBehaviour
 {
-    public string spawnerName = "";
-    public float spawnTime;
-    public GameObject objectToSpawn;
-    public float radius = 0f;
-    public bool useSphereRadius = false;
-
-    [SerializeField]
-    private float currentSpawnTime = 3f;
+    [HideInInspector] public string spawnerName = "";
+    [HideInInspector] public float spawnTime;
+    [HideInInspector] public GameObject objectToSpawn;
+    [HideInInspector] public float radius = 0f;
+    [HideInInspector] public bool useSphereRadius = false;
+    
+    [HideInInspector] public float currentSpawnTime = 3f;
     private SphereCollider sphereCollider;
 
     protected virtual void Start()

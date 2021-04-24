@@ -58,7 +58,12 @@ public class MarkerWindow : EditorWindow
         
         foreach (GameObject obj in objs)
         {
-            obj.GetComponent<MeshRenderer>().sharedMaterial.color = _color;
+            MeshRenderer renderer = obj.GetComponent<MeshRenderer>();
+            
+            if (renderer.material.name.Contains("Default-Material"))
+                continue;
+
+            renderer.sharedMaterial.color = _color;
         }
     }
 
