@@ -60,7 +60,7 @@ public class MarkerWindow : EditorWindow
         {
             MeshRenderer renderer = obj.GetComponent<MeshRenderer>();
             
-            if (renderer.material.name.Contains("Default-Material"))
+            if (renderer.sharedMaterial.name.Contains("Default-Material"))
                 continue;
 
             renderer.sharedMaterial.color = _color;
