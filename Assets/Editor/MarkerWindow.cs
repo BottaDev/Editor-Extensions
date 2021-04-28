@@ -11,7 +11,7 @@ public class MarkerWindow : EditorWindow
     private string _name;
     private Color _color;
 
-    [MenuItem("CustomTool/Marker")]
+    [MenuItem("CustomTools/Marker")]
     public static void OpenWindow()
     {
         MarkerWindow window = GetWindow<MarkerWindow>();
