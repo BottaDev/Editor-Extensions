@@ -193,7 +193,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 3.572e-42, y: 6e-44, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 2.75648e-40, y: 0, z: 1e-45, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -352,8 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14d35c0324653c488458d1ad5e288f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerName: Test
-  spawnTime: 150
+  spawnerName: Enemy
+  spawnTime: 120
   objectToSpawn: {fileID: 6393129793392751198, guid: 27e141a082998584ea05faaa582351d8,
     type: 3}
   radius: 20

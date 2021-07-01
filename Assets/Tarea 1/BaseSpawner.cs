@@ -11,12 +11,13 @@ public class BaseSpawner : MonoBehaviour
     [HideInInspector] public float radius = 0f;
     [HideInInspector] public bool useSphereRadius = false;
     
-    [HideInInspector] public float currentSpawnTime = 3f;
+    [HideInInspector] public float currentSpawnTime = 0f;
     private SphereCollider sphereCollider;
 
     protected virtual void Start()
     {
         sphereCollider = GetComponent<SphereCollider>();
+        currentSpawnTime = spawnTime;
     }
 
     protected virtual void Update()
