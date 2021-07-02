@@ -5,20 +5,23 @@ using UnityEditor;
 
 public class ReplacerWindow : EditorWindow
 {
-    private GameObject _objectReplace;
+    private static GameObject _objectReplace;
     
     // Rotation
-    private bool _useRotation = false;
-    private bool _useRotX = true;
-    private bool _useRotZ = true;
-    private bool _useRotY = true;
-    
-    // Scale
-    private bool _useScale = false;
-    private bool _useScaX = true;
-    private bool _useScaZ = true;
-    private bool _useScaY = true;
+    private static bool _useRotation = false;
+    private static bool _useRotX = true;
+    private static bool _useRotZ = true;
+    private static bool _useRotY = true;
 
+    // Scale 
+    private static bool _useScale = false;
+    private static bool _useScaX = true;
+    private static bool _useScaZ = true;
+    private static bool _useScaY = true;
+    
+    private static bool _objectError = false;
+    private static bool _selectionError = false;
+    
     [MenuItem("CustomTools/Replacer")]
     public static void OpenWindow()
     {
@@ -26,11 +29,17 @@ public class ReplacerWindow : EditorWindow
 
         window.wantsMouseMove = true;
         window.minSize = new Vector2(300, 230);
+        window.maxSize = new Vector2(310, 310);
     }
     
     private void OnGUI()
     {
         _objectReplace = EditorGUILayout.ObjectField("Object Replace: ", _objectReplace, typeof(GameObject), true) as GameObject;
+
+        if (_objectError)
+            EditorGUILayout.HelpBox("Object field is empty!", MessageType.Error, true);
+        
+        DrawUILine(Color.gray, 2, 10);
 
         _useRotation = EditorGUILayout.Toggle("Use Rotation", _useRotation);
         if (_useRotation)
@@ -52,18 +61,30 @@ public class ReplacerWindow : EditorWindow
             GUILayout.EndVertical();
         }
         
-        if (GUILayout.Button("Replace selected objects", GUILayout.Height(50)) && _objectReplace != null)
+        DrawUILine(Color.gray, 2, 10);
+        
+        if (_selectionError)
+            EditorGUILayout.HelpBox("There's no selected objets in the scene!", MessageType.Error, true);
+        
+        if (GUILayout.Button("Replace Selected Objects", GUILayout.Height(50)))
             ReplaceObjects();
     }
 
     private void ReplaceObjects()
     {
+        if (_objectReplace == null)
+            _objectError = true;
+        else
+            _objectError = false;
+
         if (Selection.gameObjects.Length == 0)
-        {
-            Debug.LogWarning("No objects selected to replace!");
-            return;
-        } 
+            _selectionError = true;
+        else
+            _selectionError = false;
         
+        if (_objectError || _objectError)
+            return;
+
         foreach (GameObject obj in Selection.gameObjects)
         {
             GameObject newObject = Instantiate(_objectReplace, obj.transform.position, _objectReplace.transform.rotation);
@@ -87,5 +108,15 @@ public class ReplacerWindow : EditorWindow
 
             DestroyImmediate(obj);
         }
+    }
+    
+    private void DrawUILine(Color color, int thickness = 2, int padding = 10)
+    {
+        Rect r = EditorGUILayout.GetControlRect(GUILayout.Height(padding+thickness));
+        r.height = thickness;
+        r.y+=padding/2;
+        r.x-=2;
+        r.width +=6;
+        EditorGUI.DrawRect(r, color);
     }
 }
