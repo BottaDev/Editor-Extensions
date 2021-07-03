@@ -28,12 +28,14 @@ public class ReplacerWindow : EditorWindow
         ReplacerWindow window = GetWindow<ReplacerWindow>();
 
         window.wantsMouseMove = true;
-        window.minSize = new Vector2(300, 230);
-        window.maxSize = new Vector2(310, 310);
+        window.minSize = new Vector2(300, 320);
+        window.maxSize = new Vector2(300, 320);
     }
     
     private void OnGUI()
     {
+        EditorGUILayout.HelpBox("Select objects in the scene to replace", MessageType.Info, true);
+        
         _objectReplace = EditorGUILayout.ObjectField("Object Replace: ", _objectReplace, typeof(GameObject), true) as GameObject;
 
         if (_objectError)
