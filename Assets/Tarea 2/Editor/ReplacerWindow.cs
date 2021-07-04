@@ -19,8 +19,8 @@ public class ReplacerWindow : EditorWindow
     private static bool _useScaZ = true;
     private static bool _useScaY = true;
     
-    private static bool _objectError = false;
-    private static bool _selectionError = false;
+    private bool _objectError = false;
+    private bool _selectionError = false;
     
     [MenuItem("CustomTools/Replacer")]
     public static void OpenWindow()
@@ -28,8 +28,8 @@ public class ReplacerWindow : EditorWindow
         ReplacerWindow window = GetWindow<ReplacerWindow>();
 
         window.wantsMouseMove = true;
-        window.minSize = new Vector2(300, 320);
-        window.maxSize = new Vector2(300, 320);
+        window.minSize = new Vector2(300, 400);
+        window.maxSize = new Vector2(300, 400);
     }
     
     private void OnGUI()
@@ -66,7 +66,7 @@ public class ReplacerWindow : EditorWindow
         DrawUILine(Color.gray, 2, 10);
         
         if (_selectionError)
-            EditorGUILayout.HelpBox("There's no selected objets in the scene!", MessageType.Error, true);
+            EditorGUILayout.HelpBox("There's no selected objects in the scene!", MessageType.Error, true);
         
         if (GUILayout.Button("Replace Selected Objects", GUILayout.Height(50)))
             ReplaceObjects();
@@ -84,7 +84,7 @@ public class ReplacerWindow : EditorWindow
         else
             _selectionError = false;
         
-        if (_objectError || _objectError)
+        if (_objectError || _selectionError)
             return;
 
         foreach (GameObject obj in Selection.gameObjects)
@@ -110,6 +110,8 @@ public class ReplacerWindow : EditorWindow
 
             DestroyImmediate(obj);
         }
+        
+        Debug.Log("Objects replaces successfully!");
     }
     
     private void DrawUILine(Color color, int thickness = 2, int padding = 10)

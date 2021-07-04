@@ -7,15 +7,15 @@ using UnityEngine;
 
 public class MarkerWindow : EditorWindow
 {
-    private bool _toogleCotainsText = true;
-    private bool _toogleSameText;
-    private bool _toogleChangeName;
-    private string _name;
-    private string _newName;
-    private Color _color;
-
-    private static readonly GUIStyle _titleStyle = new GUIStyle(EditorStyles.label);
+    private static bool _toogleCotainsText = true;
+    private static bool _toogleSameText;
+    private static bool _toogleChangeName;
+    private static string _name;
+    private static string _newName;
+    private static Color _color;
+    
     private static readonly GUIStyle _subStyle = new GUIStyle(EditorStyles.label);
+    private static readonly GUIStyle _titleStyle = new GUIStyle(EditorStyles.label);
     private static readonly GUIStyle _style = new GUIStyle(EditorStyles.label);
 
     [MenuItem("CustomTools/Marker")]

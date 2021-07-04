@@ -193,7 +193,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 8.91e-43, y: 2.4852817e-23, z: 8.91e-43, w: NaN}
+  m_BoundingSphereOverride: {x: 6.92e-43, y: -259873.12, z: 6.92e-43, w: 1.5926313e-26}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
   objectToSpawn: {fileID: 6393129793392751198, guid: 27e141a082998584ea05faaa582351d8,
     type: 3}
   radius: 20
-  useSphereRadius: 1
+  useSphereRadius: 0
   currentSpawnTime: 0
 --- !u!1 &1632735465
 GameObject:
